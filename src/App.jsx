@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "./components/Navbar";
 import Title from "./components/Title";
+import Button from "./components/Button";
 
 const App = () => {
   return (
@@ -16,7 +17,7 @@ const App = () => {
                 <div className="description">
                   <h2>고소한 바질 파스타</h2>
                   <div>6,000원</div>
-                  <button className="Button brand">주문하기</button>
+                  <Button>주문하기</Button>
                 </div>
                 <div className="thumbnail">
                   <img src="./images/menu-고소한바질파스타.jpg" alt="고소한바질파스타 6,000원" />
@@ -26,12 +27,7 @@ const App = () => {
           </ul>
         </main>
         <footer>
-          <nav className="Navbar">
-            <a className="active" href="#">
-              메뉴목록
-            </a>
-            <a href="#">주문내역</a>
-          </nav>
+          <Navbar />
         </footer>
       </div>
     </div>
