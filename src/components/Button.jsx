@@ -1,13 +1,17 @@
 import React from "react";
 
-const Button = ({ styleType, children }) => {
+const Button = ({ styleType, block, children, onClick }) => {
   let className = "Button";
   if (styleType) {
     className += ` ${styleType}`;
-    console.log(className);
+    if (block) className += " block";
   }
 
-  return <button className={className}>{children}</button>;
+  return (
+    <button className={className} onClick={onClick}>
+      {children}
+    </button>
+  );
 };
 
 export default Button;

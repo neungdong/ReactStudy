@@ -1,10 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Navbar from "./components/Navbar";
 import Title from "./components/Title";
-import Button from "./components/Button";
 import ProductItem from "./components/ProductItem";
 
 const App = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("https://dummyjson.com/products")
+      .then((res) => {
+        const refined = res.data.products.map((product) => ({
+          id: product.id,
+          name: product.title,
+          price: product.price,
+          thumbnail: product.thumbnail,
+        }));
+        setProducts(refined);
+      })
+      .catch((err) => {
+        console.error("상품 데이터를 불러오는데 실패했습니다.", err);
+      });
+  }, []);
+
   return (
     <div className="ProductPage">
       <div className="Page">
@@ -13,19 +32,11 @@ const App = () => {
         </header>
         <main>
           <ul>
-            <li>
-              <div className="ProductItem">
-                <div className="description">
-                  <h2>고소한 바질 파스타</h2>
-                  <div>6,000원</div>
-                  <Button styleType="brand-solid">결제하기</Button>
-                </div>
-                <div className="thumbnail">
-                  <img src="./images/menu-고소한바질파스타.jpg" alt="고소한바질파스타 6,000원" />
-                </div>
-              </div>
-              <ProductItem />
-            </li>
+            {products.map((product) => (
+              <li key={product.id}>
+                <ProductItem product={product} />
+              </li>
+            ))}
           </ul>
         </main>
         <footer>
