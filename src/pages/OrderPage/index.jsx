@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import OrderStatusCard from "@/pages/OrderPage/OrderStatusCard";
 import Page from "@/components/Page";
 import Title from "@/components/Title";
+import OrderDeliveryCard from "@/pages/OrderPage/OrderDeliveryCard";
 
 const fakeOrder = {
   id: "CACDA420",
@@ -24,6 +25,7 @@ const OrderPage = () => (
   <div className="OrderPage">
     <Page header={<Title>주문내역</Title>} footer={<Navbar />}>
       <OrderStatusCard order={fakeOrder} />
+      <OrderDeliveryCard order={fakeOrder} />
     </Page>
   </div>
 );
