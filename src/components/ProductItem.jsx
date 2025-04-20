@@ -15,8 +15,8 @@
 // );
 
 // export default ProductItem;
+import Button from "@/components/Button";
 import React from "react";
-import Button from "./Button";
 
 const handleClick = () => {
   console.log("주문하기 버튼 클릭됨!");
