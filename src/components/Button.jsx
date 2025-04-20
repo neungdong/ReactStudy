@@ -1,5 +1,3 @@
-import React from "react";
-
 const Button = ({ styleType, block, children, onClick }) => {
   let className = "Button";
   if (styleType) {

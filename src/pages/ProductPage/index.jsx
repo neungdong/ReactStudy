@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import Navbar from "../../components/Navbar";
-import ProductItem from "../../components/ProductItem";
-import Title from "../../components/Title";
-import Page from "../../components/Page";
-import ProductList from "../../components/ProductList";
+import Title from "@/components/Title";
+import Navbar from "@/components/Navbar";
+import ProductList from "@/components/ProductList";
+import Page from "@/components/Page";
 
 const ProductPage = () => {
   const [products, setProducts] = useState([]);
