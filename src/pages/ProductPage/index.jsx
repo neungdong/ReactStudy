@@ -1,29 +1,21 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect } from "react";
+
 import Title from "@/components/Title";
 import Navbar from "@/components/Navbar";
 import ProductList from "@/components/ProductList";
 import Page from "@/components/Page";
+import { useProducts } from "@/hooks/useProducts";
 
 const ProductPage = () => {
-  const [products, setProducts] = useState([]);
-
+  const { data: products = [], isSuccess, isLoading, isError } = useProducts();
   useEffect(() => {
-    axios
-      .get("https://dummyjson.com/products")
-      .then((res) => {
-        const refined = res.data.products.map((product) => ({
-          id: product.id,
-          name: product.title,
-          price: product.price,
-          thumbnail: product.thumbnail,
-        }));
-        setProducts(refined);
-      })
-      .catch((err) => {
-        console.error("상품 데이터를 불러오는데 실패했습니다.", err);
-      });
-  }, []);
+    if (isSuccess) {
+      alert("상품을 성공적으로 불러왔어요!");
+    }
+  }, [isSuccess]);
+
+  if (isLoading) return <div>로딩 중...</div>;
+  if (isError) return <div>상품 데이터를 불러오는데 실패했습니다.</div>;
 
   return (
     <div className="ProductPage">
